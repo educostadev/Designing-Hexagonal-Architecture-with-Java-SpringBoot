@@ -1,28 +1,37 @@
 package dev.educosta.application;
 
+import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 
+import static com.tngtech.archunit.core.domain.JavaClass.Predicates.simpleNameEndingWith;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 /**
- * Ensure Architecture contraints
+ * Ensure Architecture constraints
  */
-@AnalyzeClasses(packages = "dev.educosta.application")
+@AnalyzeClasses(
+        packages = "dev.educosta.application",
+        importOptions = {ImportOption.DoNotIncludeTests.class}
+)
 public class HexagonalArchtectureApplicationTest {
 
     @ArchTest
-    static final ArchRule interfaces_must_not_be_placed_in_implementation_packages =
-            noClasses().that().resideInAPackage("..input..").should().beInterfaces();
+    static final ArchRule input_ports_should_have_specific_format =
+            classes().that().resideInAPackage("..input..").should().notBeInterfaces()
+                    .andShould().bePackagePrivate()
+                    .andShould().implement(simpleNameEndingWith("UseCase"));
+
     @ArchTest
-    static final ArchRule package_output_should_have_only_interface =
+    static final ArchRule output_ports_should_have_specific_format =
             classes().that().resideInAPackage("..output..").should().beInterfaces()
+                    .andShould().bePublic()
                     .andShould().haveSimpleNameEndingWith("OutputPort");
     @ArchTest
-    static final ArchRule package_usecases_should_have_only_interface =
+    static final ArchRule use_cases_ports_should_have_specific_format =
             classes().that().resideInAPackage("..usecases..").should().beInterfaces()
+                    .andShould().bePublic()
                     .andShould().haveSimpleNameEndingWith("UseCase");
 
 }

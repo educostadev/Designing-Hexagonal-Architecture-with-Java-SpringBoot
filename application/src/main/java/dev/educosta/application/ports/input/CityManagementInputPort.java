@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class CityManagementInputPort implements CityManagementUseCase {
+class CityManagementInputPort implements CityManagementUseCase {
 
     @Autowired
     CityManagementOutputPort cityManagementOutputPort;
