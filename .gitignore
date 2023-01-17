@@ -1,14 +1,8 @@
-README.md
 target/
 !sa-presale-template/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 .run/
-
-*application-dev.yml
-*application-qa.yml
-*application-prd.yml
-wiremock/log.txt
 
 ### STS ###
 .apt_generated
