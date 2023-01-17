@@ -1,7 +1,7 @@
 package dev.educosta.framework.adapters.input.rest;
 
 import dev.educosta.JsonUtils;
-import dev.educosta.application.usescases.CityManagementUseCase;
+import dev.educosta.application.usecases.CityManagementUseCase;
 import dev.educosta.domain.entity.factory.CityFactory;
 import dev.educosta.domain.vo.State;
 import dev.educosta.framework.adapters.input.rest.request.CityRequest;

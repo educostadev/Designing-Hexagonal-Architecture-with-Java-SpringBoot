@@ -1,11 +1,10 @@
 package dev.educosta.framework.adapters.input.rest;
 
-import dev.educosta.application.usescases.CityManagementUseCase;
+import dev.educosta.application.usecases.CityManagementUseCase;
 import dev.educosta.domain.vo.Id;
 import dev.educosta.domain.vo.State;
 import dev.educosta.framework.adapters.input.rest.request.CityRequest;
 import dev.educosta.framework.adapters.input.rest.response.CityResponse;
-import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

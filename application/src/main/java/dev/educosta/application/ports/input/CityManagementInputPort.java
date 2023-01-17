@@ -1,7 +1,7 @@
 package dev.educosta.application.ports.input;
 
 import dev.educosta.application.ports.output.CityManagementOutputPort;
-import dev.educosta.application.usescases.CityManagementUseCase;
+import dev.educosta.application.usecases.CityManagementUseCase;
 import dev.educosta.domain.entity.City;
 import dev.educosta.domain.entity.factory.CityFactory;
 import dev.educosta.domain.vo.Id;

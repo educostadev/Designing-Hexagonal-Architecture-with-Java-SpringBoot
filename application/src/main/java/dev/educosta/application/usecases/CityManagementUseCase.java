@@ -1,4 +1,4 @@
-package dev.educosta.application.usescases;
+package dev.educosta.application.usecases;
 
 import dev.educosta.domain.entity.City;
 import dev.educosta.domain.vo.Id;

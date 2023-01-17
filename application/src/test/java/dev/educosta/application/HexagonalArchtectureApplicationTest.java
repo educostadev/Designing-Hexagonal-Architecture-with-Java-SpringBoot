@@ -1,4 +1,4 @@
-package dev.educosta;
+package dev.educosta.application;
 
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
@@ -7,6 +7,9 @@ import com.tngtech.archunit.lang.ArchRule;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
+/**
+ * Ensure Architecture contraints
+ */
 @AnalyzeClasses(packages = "dev.educosta.application")
 public class HexagonalArchtectureApplicationTest {
 
