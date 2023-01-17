@@ -1,4 +1,5 @@
 # Muti-Module Hexagonal Spring Boot Project
+The Hexagonal Architecture was coined by [Alistair Cockburn’s](https://archive.is/5j2NI) originally named Ports & Adapters and today it is one of the most popular archecture to organize your code. 
 This project was inspired by the book [Design Hexagonal Architecture with Java](https://www.amazon.com.br/Designing-Hexagonal-Architecture-Java-change-tolerant/dp/1801816484) that explains how the Hexagonal Architecture works. 
 I decided apply the concepts from the book using Spring Boot.
 
@@ -172,4 +173,4 @@ If you want to help this project you can:
 
 - Give a Github Star for this project
 - Implement more Hexagonal Archtecture rules using ArchUnit. (Open a PR) 
-- Use [Java Platform Module System (JPMS)](https://jenkov.com/tutorials/java/modules.html) to restrict the visibility of each module. (Open a PR) 
+- Use Java Platform Module System (JPMS)[[1]](https://jenkov.com/tutorials/java/modules.html)[[2]](https://github.com/tfesenko/Java-Modules-JPMS-CheatSheet/blob/master/README.md) to restrict the visibility of each module. (Open a PR) 
