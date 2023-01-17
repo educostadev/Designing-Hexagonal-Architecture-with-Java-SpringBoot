@@ -9,7 +9,7 @@ The POM file is configured to divide the spring dependencies in each module acco
 - Maven 3.8.6
 
 ## Module dependencies
-The following diagram depict the module dependency inside the Hexagonal Architecture:
+The following diagram depicts the module dependency inside the Hexagonal Architecture:
 
 ```
        ┌──────────────┐
@@ -33,7 +33,7 @@ This diagram was made with [asiiflow tool](https://asciiflow.com/#/).
 
 ### Domain
 In the Domain hexagon, we assemble the elements responsible for describing the core
-problems we want our software to solve. Entities, Value Objects, Services, Specifications are DDD concepts you can apply here.
+problems we want our software to solve. Entities, Value Objects, Services, and Specifications are DDD concepts you can apply here.
 
 ```
   ┌─────────────────┐
@@ -104,10 +104,9 @@ The Framework hexagon is the place where we assemble all the adapters required t
 The bootstrap is not part of the Hexagon architecture. It joins all others modules together to start the application.
 
 ## Class Diagram
-Requests came from Web and reachs the `Input Adapters` (Spring Controllers) that using dependency injection has `Use Cases` instances to attend the application intent. 
-Use cases are implemented by `Input Ports` that using dependency injection has `OutputPort` instances to interact to infraestructure componentes.
-Output ports are implemented by `Output Adapters` and has concrete implementations (Spring JPA) for reach infraestruct components like database.
-
+Requests came from Web and reach the `Input Adapters` (Spring Controllers) that use dependency injection to create `Use Cases` instances and attend the application intent.
+Use cases are implemented by `Input Ports` that using dependency injection create `OutputPort` instances to interact with infrastructure componentes.
+Output ports are implemented by `Output Adapters` and have concrete implementations (like Spring JPA) for reaching infrastructure components like databases.
 ````
            [WEB]
              │ 
