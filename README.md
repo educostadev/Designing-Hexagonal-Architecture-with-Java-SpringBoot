@@ -1,12 +1,16 @@
 # Muti-Module Hexagonal Spring Boot Project
-This project was inspired by the book [Design Hexagonal Architecture with Java](https://www.amazon.com.br/Designing-Hexagonal-Architecture-Java-change-tolerant/dp/1801816484) that explains how the Hexagonal Architecture works. I decided apply the concepts from the book using Spring Boot.
+This project was inspired by the book [Design Hexagonal Architecture with Java](https://www.amazon.com.br/Designing-Hexagonal-Architecture-Java-change-tolerant/dp/1801816484) that explains how the Hexagonal Architecture works. 
+I decided apply the concepts from the book using Spring Boot.
 
-The POM file is configured to divide the spring dependencies in each module according to its responsability.
+The POM file is configured to divide the spring dependencies in each module according to its responsability. 
+
+This project also uses [ArchUnit](https://www.archunit.org/) to enforce architecture rules see the classe [HexagonalArchtectureApplicationTest](./application/src/test/java/dev/educosta/application/HexagonalArchtectureApplicationTest.java).
 
 ## Technology
 - JDK 17
 - Spring Boot 3.0.1
 - Maven 3.8.6
+- ArchUnit
 
 ## Module dependencies
 The following diagram depicts the module dependency inside the Hexagonal Architecture:
@@ -161,3 +165,11 @@ curl --location --request POST 'localhost:8080/api' \
 "state": "SP"
 }'
 ```
+
+# How to Help
+
+If you want to help this project you can:
+
+- Give a Github Star for this project
+- Implement more Hexagonal Archtecture rules using ArchUnit. (Open a PR) 
+- Use [Java Platform Module System (JPMS)](https://jenkov.com/tutorials/java/modules.html) to restrict the visibility of each module. (Open a PR) 
