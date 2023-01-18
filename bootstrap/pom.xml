@@ -12,8 +12,6 @@
 	<artifactId>bootstrap</artifactId>
 
 	<name>Bootstrap Module</name>
-	<description>Description</description>
-
 
 	<build>
 		<plugins>
@@ -26,18 +24,21 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>dev.educosta</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>domain</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>dev.educosta</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>application</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>dev.educosta</groupId>
-			<artifactId>infrastructure</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>rest-api</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>datastore-mysql</artifactId>
+		</dependency>
 
 	</dependencies>
 

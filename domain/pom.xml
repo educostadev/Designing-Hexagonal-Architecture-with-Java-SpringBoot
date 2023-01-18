@@ -10,9 +10,7 @@
 	</parent>
 
 	<artifactId>domain</artifactId>
-
 	<name>Domain Module</name>
-	<description>Description</description>
 
 	<properties>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>

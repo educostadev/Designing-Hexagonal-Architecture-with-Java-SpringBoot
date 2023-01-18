@@ -1,4 +1,4 @@
-package dev.educosta.framework.adapters.output.memory;
+package dev.educosta.framework.adapters.output;
 
 import dev.educosta.application.ports.output.CityManagementOutputPort;
 import dev.educosta.domain.entity.City;

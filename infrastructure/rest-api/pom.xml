@@ -7,10 +7,12 @@
 		<groupId>dev.educosta</groupId>
 		<artifactId>my-system</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
-	<artifactId>application</artifactId>
-	<name>Application Module</name>
+	<artifactId>rest-api</artifactId>
+
+	<name>Infra Rest-Api Module</name>
 
 	<properties>
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
@@ -21,12 +23,18 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>domain</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>application</artifactId>
+		</dependency>
 
 		<dependency>
-			<groupId>com.tngtech.archunit</groupId>
-			<artifactId>archunit-junit5</artifactId>
-			<version>1.0.1</version>
-			<scope>test</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
 

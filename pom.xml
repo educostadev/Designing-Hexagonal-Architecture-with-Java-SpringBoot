@@ -16,12 +16,12 @@
 	<packaging>pom</packaging>
 	
 	<name>My System</name>
-	<description></description>
 
 	<modules>
 		<module>domain</module>
 		<module>application</module>
-		<module>infrastructure</module>
+		<module>infrastructure/rest-api</module>
+		<module>infrastructure/datastore-mysql</module>
 		<module>bootstrap</module>
 	</modules>
 
@@ -45,30 +45,29 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.24</version>
 		</dependency>
-		<dependency>
-			<groupId>com.tngtech.archunit</groupId>
-			<artifactId>archunit-junit5</artifactId>
-			<version>1.0.1</version>
-			<scope>test</scope>
-		</dependency>
 
 	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>dev.educosta</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>domain</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>dev.educosta</groupId>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>application</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>dev.educosta</groupId>
-				<artifactId>infrastructure</artifactId>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>rest-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>datastore-mysql</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

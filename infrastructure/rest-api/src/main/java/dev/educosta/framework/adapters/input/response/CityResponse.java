@@ -1,4 +1,4 @@
-package dev.educosta.framework.adapters.input.rest.response;
+package dev.educosta.framework.adapters.input.response;
 
 import java.util.UUID;
 
