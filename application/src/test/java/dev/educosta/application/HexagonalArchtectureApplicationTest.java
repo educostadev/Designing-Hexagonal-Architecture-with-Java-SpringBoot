@@ -13,7 +13,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
  */
 @AnalyzeClasses(
         packages = "dev.educosta.application",
-        importOptions = {ImportOption.DoNotIncludeTests.class}
+        importOptions = ImportOption.DoNotIncludeTests.class
 )
 public class HexagonalArchtectureApplicationTest {
 
