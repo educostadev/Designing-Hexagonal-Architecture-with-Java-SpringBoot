@@ -21,7 +21,7 @@
 	<modules>
 		<module>domain</module>
 		<module>application</module>
-		<module>framework</module>
+		<module>infrastructure</module>
 		<module>bootstrap</module>
 	</modules>
 
@@ -68,7 +68,7 @@
 			</dependency>
 			<dependency>
 				<groupId>dev.educosta</groupId>
-				<artifactId>framework</artifactId>
+				<artifactId>infrastructure</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

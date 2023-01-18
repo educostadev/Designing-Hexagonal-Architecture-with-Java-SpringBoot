@@ -27,7 +27,7 @@ The following diagram depicts the module dependency inside the Hexagonal Archite
   │    └──────────────┘   │
   │                       │
   │    ┌──────────────┐   │
-  ├───►│   framework  ├───┘
+  ├───►│Infrastructure├───┘
   │    └──────────────┘
   │
   │    ┌──────────────┐
@@ -86,8 +86,8 @@ This hexagon expresses the software's user intent and features based on the Doma
  └─────────────────┘
 ```
 
-### Framework
-The Framework hexagon is the place where we assemble all the adapters required to make the hexagonal system.
+### Infrastructure
+The Infrastructure (or Framework) hexagon is the place where we assemble all the adapters required to make the hexagonal system.
 
 - `Input Adapters` The input adapter`s role is to deal with driving operation. Driving actors are the ones who send requests to the application.
 - `Output Adapters` The output adapter's role is to deal with driven operations. Driven actors representing the external components accessed by the application.

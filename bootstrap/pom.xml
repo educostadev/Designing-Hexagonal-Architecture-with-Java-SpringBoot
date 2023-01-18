@@ -35,7 +35,7 @@
 		</dependency>
 		<dependency>
 			<groupId>dev.educosta</groupId>
-			<artifactId>framework</artifactId>
+			<artifactId>infrastructure</artifactId>
 		</dependency>
 
 

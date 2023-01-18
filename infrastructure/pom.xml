@@ -9,9 +9,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>framework</artifactId>
+	<artifactId>infrastructure</artifactId>
 
-	<name>Framework Module</name>
+	<name>Infrastructure Module</name>
 	<description>Description</description>
 
 	<properties>
