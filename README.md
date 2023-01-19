@@ -7,12 +7,14 @@ The POM file is configured to divide the spring dependencies in each module acco
 
 This project also uses [ArchUnit](https://www.archunit.org/) to enforce architecture rules see the [HexagonalArchtectureApplicationTest](./application/src/test/java/dev/educosta/application/HexagonalArchtectureApplicationTest.java) class.
 
-## Technology
+## Technologies
 - JDK 17
 - Spring Boot 3.0.1
 - Maven 3.8.6
 - ArchUnit
 - Docker & Docker Compose
+- Mysql
+- Spring JPA (Also see the [SpringDataJPA-Querydsl](https://github.com/educostadev/SpringDataJPA-Querydsl) project)
 
 ## Module dependencies
 The following diagram depicts the module dependency inside the Hexagonal Architecture:
