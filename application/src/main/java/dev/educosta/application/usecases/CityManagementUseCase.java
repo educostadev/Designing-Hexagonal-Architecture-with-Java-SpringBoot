@@ -12,4 +12,6 @@ public interface CityManagementUseCase {
 
     Optional<City> retrieveCity(Id id);
 
+    Optional<City> removeCity(Id id);
+
 }

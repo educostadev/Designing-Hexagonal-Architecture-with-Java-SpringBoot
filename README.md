@@ -5,13 +5,14 @@ I decided apply the concepts from the book using Spring Boot.
 
 The POM file is configured to divide the spring dependencies in each module according to its responsability. 
 
-This project also uses [ArchUnit](https://www.archunit.org/) to enforce architecture rules see the classe [HexagonalArchtectureApplicationTest](./application/src/test/java/dev/educosta/application/HexagonalArchtectureApplicationTest.java).
+This project also uses [ArchUnit](https://www.archunit.org/) to enforce architecture rules see the [HexagonalArchtectureApplicationTest](./application/src/test/java/dev/educosta/application/HexagonalArchtectureApplicationTest.java) class.
 
 ## Technology
 - JDK 17
 - Spring Boot 3.0.1
 - Maven 3.8.6
 - ArchUnit
+- Docker & Docker Compose
 
 ## Module dependencies
 The following diagram depicts the module dependency inside the Hexagonal Architecture:
@@ -147,6 +148,9 @@ Output ports are implemented by `Output Adapters` and have concrete implementati
 
 
 # Running the application
+
+Start the Database using docker-compose. See how [here](infrastructure/datastore-mysql/README.md)
+
 Package the application
 ```
 ./mvnw clean package
@@ -157,14 +161,23 @@ Run the application by command line
 java -jar ./bootstrap/target/bootstrap-0.0.1-SNAPSHOT.jar
 ```
 
-Test the rest endpoint
+Test the creation endpoint endpoint
 ```
-curl --location --request POST 'localhost:8080/api' \
+curl --location --request POST 'localhost:6001/api' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 "name": "São Paulo",
 "state": "SP"
 }'
+
+RESPONSE
+{"id":"61dd9be9-a203-40f1-8950-f22e964da942","name":"São Paulo","state":"SP"}
+```
+
+Test the read and delete endpoint. Take the returned ID from the above endpoint
+```
+curl --location --request GET 'localhost:6001/api/61dd9be9-a203-40f1-8950-f22e964da942'
+curl --location --request DELETE 'localhost:6001/api/61dd9be9-a203-40f1-8950-f22e964da942'
 ```
 
 # How to Help

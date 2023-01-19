@@ -7,7 +7,6 @@ import lombok.ToString;
 import java.util.UUID;
 
 @Getter
-@ToString
 @EqualsAndHashCode
 public class Id {
 
@@ -23,5 +22,10 @@ public class Id {
 
     public static Id withoutId(){
         return new Id(UUID.randomUUID());
+    }
+
+    @Override
+    public String toString(){
+        return uuid.toString();
     }
 }

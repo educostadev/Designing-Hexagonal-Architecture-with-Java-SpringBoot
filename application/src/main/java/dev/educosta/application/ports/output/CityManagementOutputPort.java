@@ -13,5 +13,4 @@ public interface CityManagementOutputPort {
 
     City saveCity(City city);
 
-
 }

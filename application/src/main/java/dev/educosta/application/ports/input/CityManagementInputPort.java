@@ -27,4 +27,9 @@ class CityManagementInputPort implements CityManagementUseCase {
     public Optional<City> retrieveCity(Id id) {
         return cityManagementOutputPort.retrieveCity(id);
     }
+
+    @Override
+    public Optional<City> removeCity(Id id) {
+        return cityManagementOutputPort.removeCity(id);
+    }
 }
