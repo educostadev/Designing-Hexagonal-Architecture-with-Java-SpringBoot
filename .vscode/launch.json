@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot Application",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "dev.educosta.Application",
+            "projectName": "bootstrap",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": "-Dspring.profiles.active=dev",
+            "console": "integratedTerminal",
+            "stopOnEntry": false,
+            "preLaunchTask": "Compile Application"
+        }
+    ]
+}

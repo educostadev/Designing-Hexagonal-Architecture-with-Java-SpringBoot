@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Compile Application",
+			"type": "shell",
+			"command": "./mvnw compile",
+			"isBackground": false,
+			"problemMatcher": [
+				"$javac"
+			],
+			"group": "build"
+		}
+	]
+}

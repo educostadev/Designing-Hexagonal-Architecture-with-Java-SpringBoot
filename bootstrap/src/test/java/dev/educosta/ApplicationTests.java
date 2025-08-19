@@ -2,19 +2,16 @@ package dev.educosta;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import dev.educosta.framework.adapters.jpa.CityRepository;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
-@EnableAutoConfiguration(exclude = {
-	DataSourceAutoConfiguration.class
+@TestPropertySource(properties = {
+	"spring.datasource.url=jdbc:h2:mem:testdb",
+	"spring.datasource.driver-class-name=org.h2.Driver",
+	"spring.jpa.hibernate.ddl-auto=create-drop",
+	"spring.jpa.database-platform=org.hibernate.dialect.H2Dialect"
 })
 class ApplicationTests {
-
-	@MockBean
-	private CityRepository cityRepository;
 
 	@Test
 	void contextLoads() {

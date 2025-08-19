@@ -1,4 +1,6 @@
 target/
+target_classes/
+target_test-classes/
 !sa-presale-template/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -31,4 +33,4 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
+#.vscode/

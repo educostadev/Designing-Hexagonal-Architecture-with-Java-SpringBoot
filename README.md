@@ -8,13 +8,18 @@ The POM file is configured to divide the spring dependencies in each module acco
 This project also uses [ArchUnit](https://www.archunit.org/) to enforce architecture rules see the [HexagonalArchtectureApplicationTest](./application/src/test/java/dev/educosta/application/HexagonalArchtectureApplicationTest.java) class.
 
 ## Technologies
-- JDK 17
-- Spring Boot 3.0.1
-- Maven 3.8.6
-- ArchUnit
+- JDK 21
+- Spring Boot 4.0.0-M1 (Milestone Release)
+- Spring Framework 7.0.0-M7
+- Maven 3.9.x (via Maven Wrapper)
+- Hibernate 7.0.7.Final
+- ArchUnit 1.3.0
+- JUnit 5
+- Mockito
+- H2 Database (for testing)
 - Docker & Docker Compose
-- Mysql
-- Spring JPA (Also see the [SpringDataJPA-Querydsl](https://github.com/educostadev/SpringDataJPA-Querydsl) project)
+- MySQL 8.x (default for local development)
+- Spring Data JPA (Also see the [SpringDataJPA-Querydsl](https://github.com/educostadev/SpringDataJPA-Querydsl) project)
 
 ## Module dependencies
 The following diagram depicts the module dependency inside the Hexagonal Architecture:
@@ -151,36 +156,94 @@ Output ports are implemented by `Output Adapters` and have concrete implementati
 
 # Running the application
 
-Start the Database using docker-compose. See how [here](infrastructure/datastore-mysql/README.md)
+## Prerequisites
 
-Package the application
+Before running the application, you need to set up the database. This project uses MySQL as the default database for local development.
+
+## Database Setup
+
+### Option 1: Using Docker Compose (Recommended)
+
+The project includes a Docker Compose configuration for MySQL database with phpMyAdmin for easy database management.
+
+**Start the database services:**
+```bash
+cd infrastructure/datastore-mysql
+docker-compose up -d
 ```
+
+This will start:
+- **MySQL Database** on port `3306`
+  - Database: `db`
+  - Username: `user` 
+  - Password: `P@ssw0rd`
+- **phpMyAdmin** on port `8081` (http://localhost:8081)
+  - Server Host: `db`
+  - Username: `user`
+  - Password: `P@ssw0rd`
+
+**Stop the database services:**
+```bash
+cd infrastructure/datastore-mysql
+docker-compose down
+```
+
+For more details, see the [datastore-mysql README](infrastructure/datastore-mysql/README.md).
+
+### Option 2: Local MySQL Installation
+
+If you prefer to use a local MySQL installation, update the connection details in `bootstrap/src/main/resources/application.yml`:
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/your_database
+    username: your_username
+    password: your_password
+```
+
+## Building and Running
+
+### 1. Package the application
+```bash
 ./mvnw clean package
 ```
 
-Run the application by command line
-```
+### 2. Run the application
+```bash
 java -jar ./bootstrap/target/bootstrap-0.0.1-SNAPSHOT.jar
 ```
 
-Test the creation endpoint endpoint
-```
+The application will start on port `6001` and automatically create the database schema.
+
+## Testing the API
+
+### Create a city
+```bash
 curl --location --request POST 'localhost:6001/api' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 "name": "São Paulo",
 "state": "SP"
 }'
+```
 
-RESPONSE
+**Response:**
+```json
 {"id":"61dd9be9-a203-40f1-8950-f22e964da942","name":"São Paulo","state":"SP"}
 ```
 
-Test the read and delete endpoint. Take the returned ID from the above endpoint
-```
+### Get a city by ID
+```bash
 curl --location --request GET 'localhost:6001/api/61dd9be9-a203-40f1-8950-f22e964da942'
+```
+
+### Delete a city by ID
+```bash
 curl --location --request DELETE 'localhost:6001/api/61dd9be9-a203-40f1-8950-f22e964da942'
 ```
+
+Replace `61dd9be9-a203-40f1-8950-f22e964da942` with the actual ID returned from the creation endpoint.
 
 # How to Help
 

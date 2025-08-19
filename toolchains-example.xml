@@ -1,0 +1,72 @@
+<!--
+Este arquivo é um exemplo de configuração de toolchains para o Maven.
+
+Propósito:
+- O objetivo deste arquivo é permitir que o Maven utilize versões específicas do JDK para compilar e executar projetos.
+- Ele é especialmente útil em ambientes onde múltiplas versões do JDK estão instaladas, garantindo consistência entre os desenvolvedores.
+
+Como usar:
+1. Copie este arquivo para o diretório de configuração do Maven, geralmente localizado em `~/.m2/`, e renomeie-o para `toolchains.xml`.
+2. Certifique-se de que os caminhos especificados no elemento `<jdkHome>` apontem para instalações válidas do JDK no sistema.
+
+Plugin Maven relacionado:
+- Este arquivo é utilizado pelo plugin `maven-toolchains-plugin`.
+- O plugin verifica este arquivo para selecionar automaticamente o JDK correto com base nos requisitos do projeto.
+
+Exemplo de configuração no `pom.xml` para usar o plugin:
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-toolchains-plugin</artifactId>
+      <version>3.1.0</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>toolchain</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
+Notas:
+- Certifique-se de que o JDK especificado no `<version>` está instalado e acessível no sistema.
+- Para verificar se o Maven está utilizando o toolchain corretamente, execute: `mvn -t ~/.m2/toolchains.xml clean install`.
+-->
+
+<toolchains>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>17</version>
+      <vendor>any</vendor>
+    </provides>
+    <configuration>
+      <jdkHome>/path/to/openjdk-17.0.2</jdkHome>
+    </configuration>
+  </toolchain>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>21</version>
+      <vendor>any</vendor>
+    </provides>
+    <configuration>
+      <jdkHome>/path/to/openjdk-21</jdkHome>
+    </configuration>
+  </toolchain>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>24</version>
+      <vendor>any</vendor>
+    </provides>
+    <configuration>
+      <jdkHome>/path/to/openjdk-24</jdkHome>
+    </configuration>
+  </toolchain>
+</toolchains>

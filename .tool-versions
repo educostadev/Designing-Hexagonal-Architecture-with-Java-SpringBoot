@@ -1,0 +1,14 @@
+# Este arquivo é usado pelo gerenciador de versões asdf para definir as versões das ferramentas utilizadas neste projeto.
+# O asdf permite gerenciar múltiplas versões de ferramentas de desenvolvimento, como Java, Node.js, Python, etc.
+#
+# Como funciona:
+# - Quando você entra no diretório deste projeto, o asdf lê este arquivo e configura automaticamente a versão especificada.
+# - Isso garante que todos os desenvolvedores utilizem a mesma versão da ferramenta, evitando inconsistências.
+#
+# Para usar o asdf:
+# 1. Instale o asdf: https://asdf-vm.com/
+# 2. Adicione o plugin Java: asdf plugin-add java https://github.com/halcyon/asdf-java.git
+# 3. Instale a versão especificada: asdf install java openjdk-21
+# 4. O asdf configurará automaticamente a versão ao entrar neste diretório.
+
+java openjdk-21

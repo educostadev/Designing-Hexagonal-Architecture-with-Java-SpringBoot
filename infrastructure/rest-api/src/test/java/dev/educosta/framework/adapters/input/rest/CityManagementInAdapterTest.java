@@ -7,14 +7,16 @@ import dev.educosta.domain.vo.State;
 import dev.educosta.framework.adapters.input.CityManagementInAdapter;
 import dev.educosta.framework.adapters.input.request.CityRequest;
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.lang.reflect.Field;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.ArgumentMatchers.any;
@@ -24,15 +26,24 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@AutoConfigureMockMvc
-@WebMvcTest
-@Import(CityManagementInAdapter.class)
+@ExtendWith(MockitoExtension.class)
 class CityManagementInAdapterTest {
 
-    @Autowired
-    MockMvc mockMvc;
-    @MockBean
+    private MockMvc mockMvc;
+    @Mock
     CityManagementUseCase cityManagementUseCase;
+
+    @BeforeEach
+    void setUp() throws Exception {
+        CityManagementInAdapter adapter = new CityManagementInAdapter();
+        
+        // Use reflection to set the private field
+        Field field = CityManagementInAdapter.class.getDeclaredField("cityManagementUseCase");
+        field.setAccessible(true);
+        field.set(adapter, cityManagementUseCase);
+        
+        mockMvc = MockMvcBuilders.standaloneSetup(adapter).build();
+    }
 
     @SneakyThrows
     @Test

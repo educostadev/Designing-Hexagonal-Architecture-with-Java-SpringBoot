@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+        <parent>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>4.0.0-M1</version>
+                <relativePath/> <!-- lookup parent from repository -->
+        </parent>
 	
 	<groupId>dev.educosta</groupId>
 	<artifactId>my-system</artifactId>
@@ -25,9 +25,13 @@
 		<module>bootstrap</module>
 	</modules>
 
-	<properties>
-		<java.version>17</java.version>
-	</properties>
+        <properties>
+                <java.version>21</java.version>
+                <querydsl.version>5.1.0</querydsl.version>
+                <mockito.version>5.18.0</mockito.version>
+                <mysql.version>8.4.0</mysql.version>
+                <archunit.version>1.4.1</archunit.version>
+        </properties>
 	
 	<dependencies>
 		<dependency>
@@ -40,20 +44,20 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
-		</dependency>
+                <dependency>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>1.18.38</version>
+                </dependency>
 
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>domain</artifactId>
-				<version>${project.version}</version>
+        <dependencyManagement>
+                <dependencies>
+                        <dependency>
+                                <groupId>${project.groupId}</groupId>
+                                <artifactId>domain</artifactId>
+                                <version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
@@ -70,18 +74,128 @@
 				<artifactId>datastore-mysql</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-		</dependencies>
-	</dependencyManagement>
+                </dependencies>
+        </dependencyManagement>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+        <repositories>
+                <repository>
+                        <id>spring-milestones</id>
+                        <name>Spring Milestones</name>
+                        <url>https://repo.spring.io/milestone</url>
+                        <snapshots>
+                                <enabled>false</enabled>
+                        </snapshots>
+                </repository>
+        </repositories>
+
+        <pluginRepositories>
+                <pluginRepository>
+                        <id>spring-milestones</id>
+                        <name>Spring Milestones</name>
+                        <url>https://repo.spring.io/milestone</url>
+                        <snapshots>
+                                <enabled>false</enabled>
+                        </snapshots>
+                </pluginRepository>
+        </pluginRepositories>
+
+        <build>
+                <pluginManagement>
+                        <plugins>
+                                <plugin>
+                                        <groupId>org.springframework.boot</groupId>
+                                        <artifactId>spring-boot-maven-plugin</artifactId>
+                                        <version>4.0.0-M1</version>
+                                </plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-surefire-plugin</artifactId>
+                                        <version>3.2.5</version>
+                                </plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-failsafe-plugin</artifactId>
+                                        <version>3.2.5</version>
+                                </plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-resources-plugin</artifactId>
+                                        <version>3.3.1</version>
+                                </plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-jar-plugin</artifactId>
+                                        <version>3.3.0</version>
+                                </plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-dependency-plugin</artifactId>
+                                        <version>3.6.1</version>
+                                </plugin>
+                                <plugin>
+                                        <groupId>org.apache.maven.plugins</groupId>
+                                        <artifactId>maven-enforcer-plugin</artifactId>
+                                        <version>3.4.1</version>
+                                </plugin>
+                        </plugins>
+                </pluginManagement>
+                <plugins>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-compiler-plugin</artifactId>
+                                <version>3.11.0</version>
+                                <configuration>
+                                        <release>21</release>
+                                </configuration>
+                        </plugin>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-surefire-plugin</artifactId>
+                                <configuration>
+                                        <argLine>-javaagent:${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar -Xshare:off</argLine>
+                                </configuration>
+                        </plugin>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-toolchains-plugin</artifactId>
+                                <version>3.1.0</version>
+                                <executions>
+                                        <execution>
+                                                <goals>
+                                                        <goal>toolchain</goal>
+                                                </goals>
+                                        </execution>
+                                </executions>
+                                <configuration>
+                                        <toolchains>
+                                                <jdk>
+                                                        <version>21</version>
+                                                </jdk>
+                                        </toolchains>
+                                </configuration>
+                        </plugin>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-enforcer-plugin</artifactId>
+                                <executions>
+                                        <execution>
+                                                <goals>
+                                                        <goal>enforce</goal>
+                                                </goals>
+                                                <configuration>
+                                                        <rules>
+                                                                <requireMavenVersion>
+                                                                        <version>[3.9.10,)</version>
+                                                                </requireMavenVersion>
+                                                                <requireJavaVersion>
+                                                                        <version>[21,)</version>
+                                                                </requireJavaVersion>
+                                                        </rules>
+                                                </configuration>
+                                        </execution>
+                                </executions>
+                        </plugin>
+                </plugins>
+        </build>
 
 </project>
